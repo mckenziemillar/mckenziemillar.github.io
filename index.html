@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>McKenzie Millar</title>
+<meta name="description" content="McKenzie Millar. Computer science student at UC Santa Cruz focused on cybersecurity.">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Layout: identity on the left, link rows and contact on the right; one column on phones. */
+    --bg: #F3F5F8;
+    --surface: #FFFFFF;
+    --ink: #101A2B;
+    --muted: #566375;
+    --line: #D3DAE3;
+    --accent: #1B57C4;
+    --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --font-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0B111C;
+      --surface: #121A28;
+      --ink: #E9EEF5;
+      --muted: #94A1B3;
+      --line: #253146;
+      --accent: #7FB0FF;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0B111C;
+    --surface: #121A28;
+    --ink: #E9EEF5;
+    --muted: #94A1B3;
+    --line: #253146;
+    --accent: #7FB0FF;
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  .page {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 28px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  .mark {
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    letter-spacing: 0.02em;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 64px;
+    align-items: start;
+  }
+
+  .eyebrow {
+    margin: 0 0 20px;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.75rem, 7.2vw, 5rem);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  .bio {
+    margin: 28px 0 0;
+    max-width: 34em;
+    color: var(--muted);
+    font-size: 1.125rem;
+  }
+
+  .side { display: flex; flex-direction: column; gap: 40px; }
+
+  .links { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+  .row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 16px;
+    padding: 20px 4px;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    transition: padding 160ms ease, color 160ms ease;
+  }
+  .row-label {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .row-meta {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+  }
+  .row-arrow {
+    font-size: 1.25rem;
+    color: var(--muted);
+    transition: transform 160ms ease, color 160ms ease;
+  }
+  .row:hover, .row:focus-visible { padding-left: 12px; color: var(--accent); }
+  .row:hover .row-arrow, .row:focus-visible .row-arrow { transform: translate(3px, -3px); color: var(--accent); }
+
+  .contact {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 24px;
+  }
+  .contact h2 {
+    margin: 0 0 14px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .contact dl { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .item {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 12px;
+  }
+  .item dt { font-size: 0.875rem; color: var(--muted); }
+  .item dd { margin: 0; min-width: 0; }
+  .item dd a {
+    font-family: var(--font-mono);
+    font-size: 0.9375rem;
+    font-variant-numeric: tabular-nums;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .item dd a:hover { color: var(--accent); text-decoration: underline; }
+  .copy {
+    font: inherit;
+    font-size: 0.8125rem;
+    min-width: 68px;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: border-color 160ms ease, color 160ms ease;
+  }
+  .copy:hover { border-color: var(--accent); color: var(--accent); }
+
+  footer {
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 800px) {
+    .page { gap: 48px; padding: 20px 20px 32px; }
+    .grid { grid-template-columns: minmax(0, 1fr); gap: 44px; }
+  }
+  @media (max-width: 420px) {
+    .item { grid-template-columns: minmax(0, 1fr) auto; row-gap: 2px; }
+    .item dt { grid-column: 1 / -1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .row, .row-arrow, .copy { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="top">
+    <span class="mark" aria-hidden="true">MM</span>
+    <span>Pleasanton, CA</span>
+  </header>
+
+  <main class="grid">
+    <section aria-labelledby="name">
+      <p class="eyebrow">Computer Science &middot; UC Santa Cruz</p>
+      <h1 id="name">McKenzie Millar</h1>
+      <p class="bio">I'm a computer science student at UC Santa Cruz focused on cybersecurity and low-level systems. I work mostly in C/C++, Python, and Java.</p>
+    </section>
+
+    <div class="side">
+      <nav class="links" aria-label="Profiles and resume">
+        <a class="row" href="https://www.linkedin.com/in/mckenzie-millar-028818331/" target="_blank" rel="noopener">
+          <span>
+            <span class="row-label">LinkedIn</span>
+            <span class="row-meta">linkedin.com/in/mckenzie-millar-028818331</span>
+          </span>
+          <span class="row-arrow" aria-hidden="true">&#8599;</span>
+        </a>
+        <a class="row" href="https://github.com/mckenziemillar" target="_blank" rel="noopener">
+          <span>
+            <span class="row-label">GitHub</span>
+            <span class="row-meta">github.com/mckenziemillar</span>
+          </span>
+          <span class="row-arrow" aria-hidden="true">&#8599;</span>
+        </a>
+        <a class="row" href="https://drive.google.com/file/d/1D8pwaaJLqNOeduLH0-zKXPbf6YFBElmZ/view" target="_blank" rel="noopener">
+          <span>
+            <span class="row-label">Resume</span>
+            <span class="row-meta">PDF &middot; updated November 2026</span>
+          </span>
+          <span class="row-arrow" aria-hidden="true">&#8599;</span>
+        </a>
+      </nav>
+
+      <section class="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact</h2>
+        <dl>
+          <div class="item">
+            <dt>Email</dt>
+            <dd><a id="email" href="mailto:mckenziemillar@gmail.com">mckenziemillar@gmail.com</a></dd>
+            <button class="copy" id="copy-email" type="button" data-copy="mckenziemillar@gmail.com" data-target="email" aria-label="Copy email address">Copy</button>
+          </div>
+          <div class="item">
+            <dt>Phone</dt>
+            <dd><a id="phone" href="tel:+19259003280">(925) 900-3280</a></dd>
+            <button class="copy" id="copy-phone" type="button" data-copy="925-900-3280" data-target="phone" aria-label="Copy phone number">Copy</button>
+          </div>
+        </dl>
+      </section>
+    </div>
+  </main>
+
+  <footer>&copy; 2026 McKenzie Millar</footer>
+
+</div>
+<script>
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var done = function () {
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = "Copy"; }, 1500);
+      };
+      var fallback = function () {
+        // Clipboard blocked: select the text so it can be copied by hand.
+        var el = document.getElementById(btn.dataset.target);
+        var range = document.createRange();
+        range.selectNodeContents(el);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      };
+      try {
+        navigator.clipboard.writeText(btn.dataset.copy).then(done, fallback);
+      } catch (e) {
+        fallback();
+      }
+    });
+  });
+</script>
+</body>
+</html>
